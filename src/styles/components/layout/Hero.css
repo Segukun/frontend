@@ -1,0 +1,29 @@
+/* Hero.css - importá dentro de Hero.jsx */
+.container {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.content {
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    color: var(--gold-400);
+}
+
+.content h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-600);
+    text-transform: uppercase;
+}
+
+.content a {
+    background: linear-gradient(180deg, var(--gold-600), #e6b042);
+    padding: 10px 18px;
+    border-radius: 999px;
+    color: var(--royal-900);
+}

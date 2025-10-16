@@ -1,0 +1,281 @@
+#catalogo {
+    grid-area: catalogo;
+    background: linear-gradient(180deg, rgba(245, 240, 235, 0.6), rgba(255, 255, 255, 0.9));
+    padding: 28px;
+    display: flex;
+    justify-content: center;
+    /* separación para que no pegue al hero/footer */
+    gap: 20px;
+}
+
+/* wrapper grid dentro del catálogo
+   Cambios principales:
+   - columnas con ancho fijo (repeat(auto-fill, 240px)) para que las cards no se estiren
+   - justify-content: center para centrar el conjunto cuando hay espacio sobrante
+   - justify-items: center para centrar las cards dentro de cada celda */
+.catalogo-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 240px); /* ancho fijo por columna */
+    justify-content: center; /* centra el grid dentro del contenedor */
+    justify-items: center; /* centra el contenido de cada celda */
+    gap: 20px;
+    align-items: start;
+    padding: 6px;
+}
+
+/* cada tarjeta
+   Cambios:
+   - limitar ancho máximo para que la card no sobrepase la columna
+   - box-sizing para asegurar que padding/border no rompan el tamaño */
+.card {
+    background: linear-gradient(180deg, var(--card-bg), #ffffff);
+    border-radius: var(--rounded);
+    padding: 18px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(9, 43, 86, 0.06);
+    box-shadow: var(--shadow-soft);
+    transition: transform 220ms cubic-bezier(.2, .9, .2, 1), box-shadow 220ms, border-color 200ms;
+
+    width: 100%;          /* ocupa el ancho de la celda */
+    max-width: 240px;     /* no crecerá más allá de la columna */
+    box-sizing: border-box;
+}
+
+/* crest decorativa arriba (CR-like) */
+.card::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -8px;
+    width: 64%;
+    height: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: linear-gradient(90deg, var(--gold-600), #e6bf47);
+    box-shadow: 0 6px 16px rgba(230, 180, 60, 0.12);
+}
+
+/* hover / foco */
+.card:hover,
+.card:focus-within {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-strong);
+    border-color: rgba(9, 43, 86, 0.14);
+    z-index: 2;
+}
+
+/* brillo sutil al pasar */
+.card:hover::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -40%;
+    width: 160%;
+    height: 60%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.0));
+    transform: rotate(20deg);
+    animation: shine 900ms ease;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-100%) rotate(20deg);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateX(100%) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+/* imagen del producto */
+.img-card {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(9, 43, 86, 0.02), rgba(0, 0, 0, 0.02));
+    margin-bottom: 12px;
+}
+
+/* título y precio */
+.titulo-card {
+    font-weight: 800;
+    color: var(--royal-900);
+    text-transform: capitalize;
+    margin: 6px 0;
+    font-size: 1.05rem;
+}
+
+/* precio con estilo "badge" */
+.precio-card {
+    display: inline-block;
+    margin: 6px 0 12px;
+    font-weight: 900;
+    color: #fff;
+    background: linear-gradient(180deg, var(--accent-red), #8f2b2b);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 14px rgba(139, 40, 40, 0.12);
+}
+
+/* cuerpo de la card: separa visualmente el form y el contenido */
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding-bottom: 6px;
+}
+
+/* form dentro de la card (cantidad + botón) */
+.card form {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    width: 100%;
+}
+
+/* input cantidad */
+.card form input[type="number"] {
+    width: 62px;
+    padding: 8px 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(9, 43, 86, 0.06);
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: #fff;
+}
+
+/* botón añadir */
+.card form input[type="submit"] {
+    background: linear-gradient(180deg, var(--royal-700), var(--royal-900));
+    color: var(--gold-600);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 0 8px 18px rgba(9, 43, 86, 0.12);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.card form input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px rgba(9, 43, 86, 0.18);
+}
+
+/* foco accesible */
+.card form input[type="number"]:focus,
+.card form input[type="submit"]:focus {
+    outline: 3px solid rgba(243, 194, 75, 0.15);
+    outline-offset: 2px;
+}
+
+/* responsive tweaks
+   Ajustes: reducir el ancho fijo de las columnas en pantallas más pequeñas
+   para que las cards sigan siendo columnas fijas que bajan a la siguiente fila. */
+@media (max-width: 900px) {
+    .catalogo-grid {
+        grid-template-columns: repeat(auto-fill, 200px); /* ancho menor en tablets */
+        gap: 14px;
+    }
+
+    .card {
+        max-width: 200px;
+        min-height: 300px;
+        padding: 14px;
+    }
+
+    .img-card {
+        height: 130px;
+    }
+}
+
+@media (max-width: 420px) {
+    .catalogo-grid {
+        grid-template-columns: repeat(auto-fill, 150px); /* ancho menor en móviles */
+        gap: 10px;
+        padding: 6px;
+    }
+
+    .card {
+        max-width: 150px;
+        min-height: 280px;
+        padding: 12px;
+    }
+
+    .img-card {
+        height: 110px;
+        border-radius: 8px;
+    }
+
+    .titulo-card {
+        font-size: 0.95rem;
+    }
+
+    .precio-card {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+    }
+}
+
+
+
+
+/* variable para controlar ancho de las cards */
+:root {
+  --card-width: 240px; /* cámbiala si querés otro ancho por defecto */
+}
+
+/* --- FLEX LAYOUT: .catalogo-grid como flex container que envuelve --- */
+.catalogo-grid {
+  display: flex;               /* cambiar a flex para usar flex-wrap */
+  flex-wrap: wrap;            /* permite que las cards bajen a la siguiente fila */
+  gap: 20px;                  /* separación entre items */
+  justify-content: center;    /* centra las filas cuando hay espacio sobrante */
+  align-items: start;         /* alinea el contenido superior de las tarjetas */
+  width: 100%;
+  max-width: 1200px;
+  padding: 6px;
+  margin: 0 auto;
+}
+
+/* cada tarjeta: tamaño fijo dentro del flex container */
+.catalogo-grid > .card,
+.catalogo-grid .card {        /* cobertura por si hay wrappers internos */
+  flex: 0 0 var(--card-width); /* no crecer, no reducir, ancho fijo */
+  width: var(--card-width);    /* garantiza tamaño consistente */
+  max-width: var(--card-width);
+  box-sizing: border-box;
+  /* mantiene tus estilos originales (si ya están definidos más arriba, esto solo asegura el tamaño) */
+}
+
+/* si necesitas que la card pueda reducirse un poco en pantallas pequeñas, usar min-width */
+@media (max-width: 900px) {
+  :root { --card-width: 200px; }
+}
+
+@media (max-width: 420px) {
+  :root { --card-width: 150px; }
+}

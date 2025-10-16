@@ -1,0 +1,26 @@
+/* Carrito.css - importá dentro de Carrito.jsx */
+.compra-page {
+    margin: 28px auto;
+    padding: 18px;
+    max-width: var(--max-width);
+    background: linear-gradient(180deg, #fffdf8, #fffaf3);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+#carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid rgba(9, 43, 86, 0.03);
+}

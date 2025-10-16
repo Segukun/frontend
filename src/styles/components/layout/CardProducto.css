@@ -1,0 +1,34 @@
+/* CardProducto.css - importá dentro de CardProducto.jsx */
+.card {
+    background: linear-gradient(180deg, var(--card-bg), #fff);
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img-card {
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.titulo-card {
+    color: var(--royal-900);
+    font-weight: 800;
+}
+
+.precio-card {
+    color: var(--accent-red);
+    font-weight: 800;
+}
+
+.card form input[type="submit"] {
+    background: linear-gradient(180deg, var(--royal-700), var(--royal-900));
+    color: var(--gold-600);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+}

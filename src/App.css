@@ -1,0 +1,56 @@
+/* base.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&family=Cinzel:wght@400;700&display=swap');
+
+:root {
+  --royal-900: #092b56;
+  --royal-700: #143d7a;
+  --gold-600: #f3c24b;
+  --gold-400: #f7d88a;
+  --wood-100: #fdebd1;
+  --accent-red: #b33a3a;
+  --muted: #6e6b6b;
+  --card-bg: #fff8ef;
+  --shadow: 0 10px 30px rgba(8, 10, 20, 0.15);
+  --rounded: 12px;
+  --max-width: 1100px;
+  --transition-fast: 180ms;
+}
+
+/* base reset (si ya tenés margin/padding 0 en App.css, no importa) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(180deg, #fffaf3, #ffffff);
+  color: #222;
+}
+
+/* pequeñas utilidades */
+.container-max {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.rounded {
+  border-radius: var(--rounded);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
