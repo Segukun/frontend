@@ -8,7 +8,7 @@ const Header = () => {
       <Link to="/" className="logo-link">
         <img className="site-logo" src="public/HolyShop-banner.png" alt="logo" />
       </Link>
-      <h2 className="header-title"> Bienvenido a HolyShop: la tienda de productos online</h2>
+      <h2 className="header-title">The only shop that you need</h2>
       <nav className="header-nav">
         <Link to="/">Inicio</Link>
         <Link to="/carrito">Carrito</Link>
