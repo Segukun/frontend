@@ -1,11 +1,9 @@
 /* base.css */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&family=Cinzel:wght@400;700&display=swap');
 
-/* ================================
-   🎨 Hololive-inspired Color System
-   - Light & Dark variants
-   - Unified gradients for no section line
-=================================== */
+html {
+  scroll-behavior: smooth;
+}
 :root {
   /* Light mode */
   --hl-bg: #ffffff;              /* Page background */
@@ -44,9 +42,7 @@ body.dark-mode {
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* ================================
-   🌐 Global Layout & Base Styles
-=================================== */
+
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -62,7 +58,7 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
-/* Keep footer at the bottom naturally */
+
 footer {
   margin-top: auto;
 }
@@ -75,7 +71,7 @@ main,
   margin-top: calc(var(--header-h, 76px) + 12px);
 }
 
-/* ========= HEADER TITLE RESPONSIVE FIX ========= */
+
 .header-title {
   font-size: 1.2rem;
   font-weight: 700;
@@ -91,11 +87,11 @@ main,
 }
 
 @media (max-width: 640px) {
-  /* hide on small screens if layout gets tight */
+
   .header-title { display: none; }
 }
 
-/* ========= FOOTER FIX ========= */
+
 footer {
   width: 100%;
   background: linear-gradient(180deg, var(--hl-surface, #eaf7ff), var(--hl-bg, #f9fcff));
@@ -111,7 +107,7 @@ footer p {
   color: var(--hl-text, #333);
 }
 
-/* Links (Terms, Privacy, Contact) */
+/* Links (Terms, Privacy) */
 footer a {
   color: var(--hl-primary, #00aaff);
   text-decoration: none;
@@ -124,9 +120,7 @@ footer a:hover {
   color: var(--hl-accent, #0095e9);
 }
 
-/* ================================
-   ✨ FIX SECTION GAP LINE (Hero → Catalogo)
-=================================== */
+
 body, main, section, #catalogo, .container {
   background: linear-gradient(180deg, #f2faff 0%, #f9fcff 100%);
   border: none;
@@ -147,7 +141,7 @@ body, main, section, #catalogo, .container {
 }
 
 /* ================================
-   🌙 Dark Mode Background Transitions
+   Dark Mode Background Transitions
 =================================== */
 body.dark-mode,
 body.dark-mode main,

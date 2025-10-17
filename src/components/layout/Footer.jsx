@@ -11,9 +11,8 @@ const Footer = () => {
           Todos los derechos reservados.
         </p>
         <div className="footer__links">
-          <a href="#">Términos</a>
-          <a href="#">Privacidad</a>
-          <a href="#">Contacto</a>
+          <a href="https://shop.hololivepro.com/pages/terms">Términos</a>
+          <a href="https://shop.hololivepro.com/pages/privacy-policy">Privacidad</a>
         </div>
       </div>
     </footer>

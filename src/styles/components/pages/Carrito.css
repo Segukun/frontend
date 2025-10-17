@@ -1,4 +1,3 @@
-/* Carrito.css - importá dentro de Carrito.jsx */
 .compra-page {
     margin: auto auto 80px auto;
     padding: 18px;
@@ -34,4 +33,82 @@
     background: color-mix(in srgb, var(--hl-surface) 85%, var(--hl-primary) 15%);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px color-mix(in srgb, var(--hl-primary) 12%, transparent);
+}
+
+.div-opciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btn-eliminar {
+    margin-left: 12px;
+    padding: 6px 14px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--hl-primary) 70%, #0095ff), var(--hl-primary-600));
+    color: #ffffff;
+    font-weight: 800;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--hl-primary) 30%, transparent);
+    border: 1px solid color-mix(in srgb, var(--hl-primary) 50%, transparent);
+    cursor: pointer;
+    letter-spacing: 0.2px;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+
+
+.btn-volver {
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: linear-gradient(180deg, var(--hl-primary), var(--hl-primary-600));
+    color: var(--hl-bg);
+    font-weight: 900;
+    border-radius: 999px;
+    box-shadow: 0 6px 14px color-mix(in srgb, var(--hl-primary) 18%, transparent);
+    text-decoration: none;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.btn-volver:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--hl-primary) 25%, transparent);
+}
+
+.btn-pagar {
+    margin-top: 12px;
+    padding: 12px 24px;
+    background: linear-gradient(180deg, var(--hl-primary), var(--hl-primary-600));
+    color: var(--hl-bg);
+    font-weight: 900;
+    border-radius: 999px;
+    box-shadow: 0 6px 14px color-mix(in srgb, var(--hl-primary) 18%, transparent);
+    border: none;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.btn-pagar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--hl-primary) 25%, transparent);
+}
+
+@media (max-width: 600px) {
+    .div-opciones {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .btn-volver,
+    .btn-pagar {
+        width: 100%;
+    }
+
+    .btn-eliminar {
+        margin: 0 ;
+        padding: 0px ;
+        border-radius: 0px;
+}
 }

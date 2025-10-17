@@ -1,7 +1,5 @@
-/* 固定ヘッダーの高さ（必要なら調整） */
 :root { --header-h: 76px; }
 
-/* 追従ヘッダー */
 .site-header{
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -19,7 +17,6 @@
   border-bottom: 2px solid var(--hl-border);
 }
 
-/* スクロール時に半透明＋ブラー */
 .site-header.is-scrolled{
   background: color-mix(in srgb, var(--hl-primary) 75%, transparent);
   backdrop-filter: saturate(140%) blur(8px);
@@ -27,10 +24,9 @@
   border-bottom-color: color-mix(in srgb, var(--hl-border) 80%, transparent);
 }
 
-/* コンテンツが隠れないようにスペーサー */
 .header-spacer{ height: var(--header-h); }
 
-/* --- LOGO --- */
+/*El LOGO!!*/
 .logo-link {
   position: absolute;
   left: 16px;
@@ -41,49 +37,26 @@
   justify-content: center;
 }
 
-/* Slightly larger, with adaptive background and shadow for readability */
 .site-logo {
   width: 126px;
   height: auto;
   object-fit: contain;
   border-radius: 12px;
   padding: 4px 6px;
-
-  /* Glass-style background for better visibility */
   background: color-mix(in srgb, var(--hl-bg) 70%, transparent);
-  box-shadow:
-    0 0 12px rgba(255, 255, 255, 0.4),
-    0 4px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 12px rgba(255,255,255,.4), 0 4px 14px rgba(0,0,0,.25);
   backdrop-filter: blur(6px) saturate(140%);
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
-
-/* On hover: a subtle pop effect */
 .site-logo:hover {
   transform: scale(1.05);
-  box-shadow:
-    0 0 16px rgba(255, 255, 255, 0.6),
-    0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 16px rgba(255,255,255,.6), 0 6px 20px rgba(0,0,0,.3);
 }
-
-/* --- DARK MODE: softer glass and less glow --- */
 body.dark-mode .site-logo {
   background: color-mix(in srgb, var(--hl-surface) 85%, transparent);
-  box-shadow:
-    0 0 8px rgba(0, 0, 0, 0.35),
-    0 4px 12px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 8px rgba(0,0,0,.35), 0 4px 12px rgba(0,0,0,.45);
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 700px) {
-  .site-logo { width: 104px; padding: 3px 5px; }
-}
-
-@media (max-width: 460px) {
-  .site-logo { width: 92px; padding: 3px 4px; }
-}
-
-/* タイトル */
 .header-title{
   margin: 0;
   font-size: 1.2rem;
@@ -92,31 +65,29 @@ body.dark-mode .site-logo {
   color: var(--hl-bg);
   letter-spacing: 0.6px;
   text-shadow: 0 1px 0 rgba(0,0,0,0.08);
-  padding: 0 120px; /* 左右のロゴ/アクションのスペースを空ける */
+  padding: 0 120px; 
 }
 
-/* 追加: nav とトグルを並べるためのラッパー */
 .header-actions{
   position: absolute; right: 16px; top: 50%;
   transform: translateY(-50%);
   display:flex; align-items:center; gap: 12px;
 }
 
-/* ナビ */
 .header-nav{
-  display:flex; gap: 10px;
+  display:flex; gap: 10px; flex-wrap: nowrap;
 }
 .header-nav a{
   color: var(--hl-bg);
   text-decoration:none;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 10px;
   background: color-mix(in srgb, var(--hl-surface) 25%, transparent);
   border: 1px solid color-mix(in srgb, var(--hl-bg) 40%, transparent);
   font-weight:700;
   transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
   display: inline-flex; align-items:center; justify-content:center;
-  width: 100px;
+  min-width: 92px; 
 }
 .header-nav a:hover{
   background: color-mix(in srgb, var(--hl-accent) 35%, transparent);
@@ -125,7 +96,6 @@ body.dark-mode .site-logo {
   border-color: var(--hl-bg);
 }
 
-/* トグルボタン */
 .toggle-mode{
   appearance: none;
   border: 1px solid var(--hl-border);
@@ -149,15 +119,56 @@ body.dark-mode .site-logo {
   outline-offset: 2px;
 }
 
-/* レスポンシブ */
+@media (max-width: 1060px){
+  .header-title{ display: none; }
+  .site-logo{ width: 118px; }
+}
+
 @media (max-width: 760px){
   :root { --header-h: 68px; }
-  .site-logo{ width: 86px; }
-  .header-title{ font-size: .95rem; padding: 0 96px; }
+  .site-logo{ width: 96px; }
+  .header-nav a{ min-width: 80px; padding: 6px 10px; font-size: .95rem; }
 }
-@media (max-width: 460px){
-  :root { --header-h: 64px; }
-  .site-logo{ width: 72px; }
-  .header-title{ font-size: .88rem; padding: 0 84px; }
-  .header-nav a{ padding: 5px 8px; font-size: .9rem; }
+
+@media (max-width: 560px){
+  :root { --header-h: 116px; }  
+
+  .site-header{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-items: center;
+    padding: 10px 12px;
+  }
+
+  .logo-link{
+    position: static;
+    transform: none;
+    order: 1;
+    margin-bottom: 6px;
+  }
+  .site-logo{ width: 104px; padding: 3px 5px; }
+
+  .header-actions{
+    position: static;
+    transform: none;
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px 12px;
+    flex-wrap: wrap;
+  }
+
+  .header-nav{ gap: 10px; flex-wrap: wrap; }
+  .header-nav a{ min-width: 0; padding: 6px 10px; }
+
+  .toggle-mode{ padding: 6px 10px; font-size: .9rem; }
+}
+
+@media (max-width: 420px){
+  :root { --header-h: 124px; }
+  .site-logo{ width: 92px; padding: 3px 4px; }
+  .header-nav a{ font-size: .9rem; }
 }

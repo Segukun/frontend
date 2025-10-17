@@ -14,7 +14,7 @@ const Carrito = () => {
     // sincronizo la info del producto con BDSimu para mostrar img y precio unitario
     const merged = carrito.map(ci => {
       const producto = BDSimu.find(p => p.nombre === ci.nombre) || {};
-      return {...ci, img: producto.img, precioUnitario: producto.precio || Math.round(ci.precioTotal / Math.max(1, ci.cantidad))};
+      return { ...ci, img: producto.img, precioUnitario: producto.precio || Math.round(ci.precioTotal / Math.max(1, ci.cantidad)) };
     });
     setItemsConDatos(merged);
   }, [carrito]);
@@ -43,20 +43,22 @@ const Carrito = () => {
 
             <form onSubmit={(e) => onEliminar(e, prod.nombre, prod.precioUnitario)}>
               <input name="cantidad" type="number" required min="1" max={prod.cantidad} />
-              <input type="submit" value="Eliminar" />
+              <input className="btn-eliminar" type="submit" value="Eliminar" />
             </form>
           </li>
         ))}
       </ul>
+      <div className="div-opciones">
+        <button id="check" className={carrito.length === 0 ? "disabled" : "btn-pagar"} onClick={() => carrito.length > 0 && setOpenModal(true)}>
+          Ir a Pagar
+        </button>
 
-      <button id="check" className={carrito.length === 0 ? "disabled" : ""} onClick={() => carrito.length > 0 && setOpenModal(true)}>
-        Ir a Pagar
-      </button>
-
-      {openModal && <ModalCompra onClose={() => setOpenModal(false)} />}
-      <div style={{ marginTop: 20 }}>
-        <Link to="/">Volver al catálogo</Link>
+        {openModal && <ModalCompra onClose={() => setOpenModal(false)} />}
+        <div style={{ marginTop: 20 }}>
+          <Link className="btn-volver" to="/">Volver al catálogo</Link>
+        </div>
       </div>
+
     </section>
   );
 };
