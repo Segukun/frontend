@@ -17,7 +17,7 @@ const Hero = () => {
   return (
     <section className="container">
       <video autoPlay loop muted playsInline className="background-clip">
-        <source src="/huyepancakes.mp4" type="video/mp4" />
+        <source src="/videotiburon.mp4" type="video/mp4" />
       </video>
 
       <div className="content">
