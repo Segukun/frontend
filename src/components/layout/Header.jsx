@@ -10,7 +10,6 @@ const Header = () => {
   });
   const [scrolled, setScrolled] = useState(false);
 
-  // 同期: body のライト/ダーク
   useEffect(() => {
     const body = document.body;
     body.classList.add("light-mode");
@@ -18,7 +17,6 @@ const Header = () => {
     localStorage.setItem("mode", JSON.stringify(modoOscuro));
   }, [modoOscuro]);
 
-  // スクロールで is-scrolled を付与
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
@@ -37,7 +35,6 @@ const Header = () => {
 
         <h2 className="header-title">The only shop that you need</h2>
 
-        {/* 追加: 衝突回避のため nav とボタンを一括で並べる */}
         <div className="header-actions">
           <nav className="header-nav" aria-label="Navegación principal">
             <Link to="/">Inicio</Link>
@@ -56,8 +53,6 @@ const Header = () => {
           </button>
         </div>
       </header>
-
-      {/* 固定ヘッダーのぶんのスペーサー */}
       <div className="header-spacer" aria-hidden="true"></div>
     </>
   );
