@@ -1,11 +1,14 @@
 /* Carrito.css - importá dentro de Carrito.jsx */
 .compra-page {
-    margin: 28px auto;
+    margin: auto auto 80px auto;
     padding: 18px;
     max-width: var(--max-width);
-    background: linear-gradient(180deg, #fffdf8, #fffaf3);
+    background: linear-gradient(180deg, var(--hl-surface), var(--hl-bg));
     border-radius: 12px;
     box-shadow: var(--shadow);
+    border: 1px solid var(--hl-border);
+    color: var(--hl-text);
+    transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 #carrito {
@@ -21,6 +24,14 @@
     align-items: center;
     padding: 10px;
     border-radius: 8px;
-    background: #fff;
-    border: 1px solid rgba(9, 43, 86, 0.03);
+    background: var(--hl-surface);
+    border: 1px solid var(--hl-border);
+    box-shadow: 0 6px 12px color-mix(in srgb, var(--hl-primary) 6%, transparent);
+    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.item-carrito:hover {
+    background: color-mix(in srgb, var(--hl-surface) 85%, var(--hl-primary) 15%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--hl-primary) 12%, transparent);
 }

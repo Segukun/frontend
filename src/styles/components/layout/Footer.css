@@ -1,0 +1,77 @@
+/* Footer.css - Hololive styled footer */
+.footer {
+    width: 100%;
+    background: linear-gradient(180deg, var(--hl-surface), var(--hl-bg));
+    border-top: 1px solid var(--hl-border);
+    box-shadow: 0 -4px 14px color-mix(in srgb, var(--hl-primary) 8%, transparent);
+    padding: 32px 18px;
+    display: flex;
+    justify-content: center;
+    color: var(--hl-text);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.footer__inner {
+    width: 100%;
+    max-width: var(--max-width);
+    text-align: center;
+}
+
+.footer__brand {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--hl-primary);
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.footer__text {
+    font-size: 0.95rem;
+    color: var(--hl-text);
+    margin-bottom: 14px;
+}
+
+.footer__links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer__links a {
+    color: var(--hl-primary);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.footer__links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: var(--hl-accent);
+    transition: width var(--transition-fast);
+}
+
+.footer__links a:hover {
+    color: var(--hl-accent);
+}
+
+.footer__links a:hover::after {
+    width: 100%;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+    .footer__brand {
+        font-size: 1.2rem;
+    }
+
+    .footer__links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

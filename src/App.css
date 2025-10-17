@@ -1,56 +1,159 @@
 /* base.css */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&family=Cinzel:wght@400;700&display=swap');
 
+/* ================================
+   🎨 Hololive-inspired Color System
+   - Light & Dark variants
+   - Unified gradients for no section line
+=================================== */
 :root {
-  --royal-900: #092b56;
-  --royal-700: #143d7a;
-  --gold-600: #f3c24b;
-  --gold-400: #f7d88a;
-  --wood-100: #fdebd1;
-  --accent-red: #b33a3a;
-  --muted: #6e6b6b;
-  --card-bg: #fff8ef;
+  /* Light mode */
+  --hl-bg: #ffffff;              /* Page background */
+  --hl-surface: #f4fbff;         /* Soft holo cyan tone */
+  --hl-border: #d7eafd;          /* Cyan border */
+  --hl-text: #0f172a;            /* Main text */
+  --hl-muted: #6b7280;           /* Secondary text */
+
+  --hl-primary: #00b9ff;         /* Hololive cyan */
+  --hl-primary-600: #08a7ea;     /* Slightly darker cyan */
+  --hl-accent: #7dd3fc;          /* Accent light cyan */
+  --hl-warn: #ffd166;            /* Optional warm tone */
+  --hl-error: #ef4444;           /* Error red */
+
+  /* UI Tokens */
   --shadow: 0 10px 30px rgba(8, 10, 20, 0.15);
   --rounded: 12px;
   --max-width: 1100px;
   --transition-fast: 180ms;
 }
 
-/* base reset (si ya tenés margin/padding 0 en App.css, no importa) */
-* {
+/* Dark Mode */
+body.dark-mode {
+  --hl-bg: #0b1220;
+  --hl-surface: #101a2b;
+  --hl-border: #203047;
+  --hl-text: #e5e7eb;
+  --hl-muted: #94a3b8;
+
+  --hl-primary: #00b9ff;
+  --hl-primary-600: #4ccfff;
+  --hl-accent: #38bdf8;
+  --hl-warn: #f2c14e;
+  --hl-error: #f87171;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ================================
+   🌐 Global Layout & Base Styles
+=================================== */
+html, body, #root {
+  height: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  font-family: 'Nunito', sans-serif;
-  background: linear-gradient(180deg, #fffaf3, #ffffff);
-  color: #222;
-}
-
-/* pequeñas utilidades */
-.container-max {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.rounded {
-  border-radius: var(--rounded);
-}
-
-.center {
+body {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f2faff 0%, #f9fcff 100%);
+  color: var(--hl-text);
+  font-family: 'Nunito', sans-serif;
 }
 
-.hidden {
-  display: none !important;
+/* Keep footer at the bottom naturally */
+footer {
+  margin-top: auto;
 }
+
+/* ========= SPACING UNDER HEADER ========= */
+main, 
+#catalogo, 
+.compra-page, 
+#carrito {
+  margin-top: calc(var(--header-h, 76px) + 12px);
+}
+
+/* ========= HEADER TITLE RESPONSIVE FIX ========= */
+.header-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+  .header-title { font-size: 1rem; }
+}
+
+@media (max-width: 760px) {
+  .header-title { font-size: 0.9rem; letter-spacing: 0.4px; }
+}
+
+@media (max-width: 640px) {
+  /* hide on small screens if layout gets tight */
+  .header-title { display: none; }
+}
+
+/* ========= FOOTER FIX ========= */
+footer {
+  width: 100%;
+  background: linear-gradient(180deg, var(--hl-surface, #eaf7ff), var(--hl-bg, #f9fcff));
+  text-align: center;
+  padding: 24px 16px;
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: var(--hl-text, #333);
+}
+
+/* Links (Terms, Privacy, Contact) */
+footer a {
+  color: var(--hl-primary, #00aaff);
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: var(--hl-accent, #0095e9);
+}
+
+/* ================================
+   ✨ FIX SECTION GAP LINE (Hero → Catalogo)
+=================================== */
+body, main, section, #catalogo, .container {
+  background: linear-gradient(180deg, #f2faff 0%, #f9fcff 100%);
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.container {
+  background: linear-gradient(180deg, #f0f9ff 0%, #f7fbff 60%, #f9fcff 100%);
+}
+
+#catalogo {
+  background: linear-gradient(180deg, rgba(242, 250, 255, 0.95), rgba(249, 252, 255, 1));
+  margin-top: 0;
+  padding-top: 24px;
+  border: none;
+  box-shadow: none;
+}
+
+/* ================================
+   🌙 Dark Mode Background Transitions
+=================================== */
+body.dark-mode,
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode #catalogo {
+  background: linear-gradient(180deg, #0b1220 0%, #101a2b 100%);
+  color: var(--hl-text);
+}
+

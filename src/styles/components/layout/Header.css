@@ -1,73 +1,163 @@
-/* Header.css - estilos para el header con logo incluido */
+/* 固定ヘッダーの高さ（必要なら調整） */
+:root { --header-h: 76px; }
+
+/* 追従ヘッダー */
 .site-header{
-  background: linear-gradient(90deg, var(--royal-900), var(--royal-700));
-  color: var(--gold-600);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: 1000;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 32px 36px;
-  box-shadow: 0 6px 18px rgba(8,12,30,0.25);
-  border-bottom: 3px solid rgba(255,255,255,0.04);
+
+  background: linear-gradient(90deg, var(--hl-primary), var(--hl-primary-600));
+  color: var(--hl-bg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  border-bottom: 2px solid var(--hl-border);
 }
 
-/* logo */
+/* スクロール時に半透明＋ブラー */
+.site-header.is-scrolled{
+  background: color-mix(in srgb, var(--hl-primary) 75%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--hl-primary) 20%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--hl-border) 80%, transparent);
+}
+
+/* コンテンツが隠れないようにスペーサー */
+.header-spacer{ height: var(--header-h); }
+
+/* --- LOGO --- */
 .logo-link {
   position: absolute;
-  left: 14px;
-  top: 8px;
-  display: block;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.site-logo{
-  width: 110px;
+
+/* Slightly larger, with adaptive background and shadow for readability */
+.site-logo {
+  width: 126px;
   height: auto;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
-  display: block;
+  border-radius: 12px;
+  padding: 4px 6px;
+
+  /* Glass-style background for better visibility */
+  background: color-mix(in srgb, var(--hl-bg) 70%, transparent);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.4),
+    0 4px 14px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px) saturate(140%);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
-/* título centrado */
+/* On hover: a subtle pop effect */
+.site-logo:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 16px rgba(255, 255, 255, 0.6),
+    0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- DARK MODE: softer glass and less glow --- */
+body.dark-mode .site-logo {
+  background: color-mix(in srgb, var(--hl-surface) 85%, transparent);
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 700px) {
+  .site-logo { width: 104px; padding: 3px 5px; }
+}
+
+@media (max-width: 460px) {
+  .site-logo { width: 92px; padding: 3px 4px; }
+}
+
+/* タイトル */
 .header-title{
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 900;
   text-align:center;
-  color: var(--gold-400);
+  color: var(--hl-bg);
   letter-spacing: 0.6px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  padding: 0 120px; /* 左右のロゴ/アクションのスペースを空ける */
 }
 
-/* navegación a la derecha */
+/* 追加: nav とトグルを並べるためのラッパー */
+.header-actions{
+  position: absolute; right: 16px; top: 50%;
+  transform: translateY(-50%);
+  display:flex; align-items:center; gap: 12px;
+}
+
+/* ナビ */
 .header-nav{
-  position: absolute;
-  right: 14px;
-  top: 10px;
-  display:flex;
-  gap: 10px;
+  display:flex; gap: 10px;
 }
 .header-nav a{
-  color: var(--gold-400);
+  color: var(--hl-bg);
   text-decoration:none;
   padding: 6px 10px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--hl-surface) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--hl-bg) 40%, transparent);
   font-weight:700;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+  display: inline-flex; align-items:center; justify-content:center;
+  width: 100px;
 }
 .header-nav a:hover{
-  background: rgba(255,255,255,0.06);
-  color: #fff;
+  background: color-mix(in srgb, var(--hl-accent) 35%, transparent);
+  color: var(--hl-bg);
+  transform: translateY(-1px);
+  border-color: var(--hl-bg);
 }
 
-/* responsive: logo más pequeño y título menos grande */
-@media (max-width: 700px){
-  .site-logo{ width: 78px; left: 10px; top: 6px; }
-  .header-nav{ right: 10px; top: 8px; }
-  .header-title{ font-size: 0.95rem; padding: 0 36px; } /* espacio por logo y nav */
+/* トグルボタン */
+.toggle-mode{
+  appearance: none;
+  border: 1px solid var(--hl-border);
+  background: linear-gradient(180deg, var(--hl-surface), var(--hl-bg));
+  color: var(--hl-text);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 14px color-mix(in srgb, var(--hl-primary) 10%, transparent);
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.toggle-mode:hover{
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--hl-surface) 70%, var(--hl-accent));
+  border-color: var(--hl-primary);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--hl-primary) 16%, transparent);
+}
+.toggle-mode:focus{
+  outline: 3px solid color-mix(in srgb, var(--hl-accent) 55%, transparent);
+  outline-offset: 2px;
 }
 
-/* muy pequeño */
-@media (max-width: 420px){
-  .site-logo{ width: 64px; }
-  .header-title{ font-size: 0.85rem; padding: 0 30px; }
-  .header-nav a{ padding: 5px 8px; font-size: 0.85rem; }
+/* レスポンシブ */
+@media (max-width: 760px){
+  :root { --header-h: 68px; }
+  .site-logo{ width: 86px; }
+  .header-title{ font-size: .95rem; padding: 0 96px; }
+}
+@media (max-width: 460px){
+  :root { --header-h: 64px; }
+  .site-logo{ width: 72px; }
+  .header-title{ font-size: .88rem; padding: 0 84px; }
+  .header-nav a{ padding: 5px 8px; font-size: .9rem; }
 }

@@ -1,34 +1,55 @@
-/* CardProducto.css - importá dentro de CardProducto.jsx */
 .card {
-    background: linear-gradient(180deg, var(--card-bg), #fff);
+    background: linear-gradient(180deg, var(--hl-surface), var(--hl-bg));
     border-radius: 10px;
     padding: 14px;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: 1px solid var(--hl-border);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px color-mix(in srgb, var(--hl-primary) 20%, transparent);
+}
+
+/* imagen */
 .img-card {
     height: 140px;
     object-fit: cover;
     border-radius: 8px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--hl-primary) 10%, transparent), color-mix(in srgb, var(--hl-surface) 90%, transparent));
 }
 
+/* título */
 .titulo-card {
-    color: var(--royal-900);
+    color: var(--hl-text);
     font-weight: 800;
 }
 
+/* precio */
 .precio-card {
-    color: var(--accent-red);
+    color: var(--hl-accent);
     font-weight: 800;
 }
 
+/* botón */
 .card form input[type="submit"] {
-    background: linear-gradient(180deg, var(--royal-700), var(--royal-900));
-    color: var(--gold-600);
+    background: linear-gradient(180deg, var(--hl-primary), var(--hl-primary-600));
+    color: var(--hl-bg);
     border: none;
     padding: 8px 10px;
     border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 12px color-mix(in srgb, var(--hl-primary) 20%, transparent);
+    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card form input[type="submit"]:hover {
+    background: linear-gradient(180deg, var(--hl-primary-600), var(--hl-accent));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px color-mix(in srgb, var(--hl-primary) 25%, transparent);
 }

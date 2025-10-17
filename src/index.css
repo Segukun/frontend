@@ -1,11 +1,13 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  /* そのまま維持（OSのカラースキーム宣言） */
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+
+  /* ここをパレット参照に変更 */
+  color: var(--hl-text);
+  background-color: var(--hl-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +17,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--hl-primary);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--hl-primary-600);
 }
 
 body {
@@ -28,11 +30,16 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  /* 背景をテーマに合わせてグラデに（淡い差） */
+  background: linear-gradient(180deg, var(--hl-bg), var(--hl-surface));
+  color: var(--hl-text);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--hl-text);
 }
 
 button {
@@ -41,28 +48,24 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+
+  /* ライト/ダーク両対応の面色 */
+  background-color: var(--hl-surface);
+  color: var(--hl-text);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s, transform 0.2s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--hl-primary);
+  background-color: color-mix(in srgb, var(--hl-surface) 75%, var(--hl-accent));
+  transform: translateY(-1px);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px solid color-mix(in srgb, var(--hl-accent) 55%, transparent);
+  outline-offset: 2px;
+  border-color: var(--hl-primary);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* OS のライトテーマ用の上書きは不要。
+   変数が app.css / body.dark-mode で切り替わるため、そのまま削除。 */
