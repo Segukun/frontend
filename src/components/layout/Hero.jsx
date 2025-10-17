@@ -21,8 +21,8 @@ const Hero = () => {
       </video>
 
       <div className="content">
-        <h1 id="texto"> Aña! tenemos muchos peluches para usted </h1>
-        <a href="#catalogo"> Compra ya! </a>
+        <h1 id="texto"> Productos VTuber, voces exclusivas, ilustraciones y más.</h1>
+        <a href="#catalogo"> Compra ahora! </a>
       </div>
     </section>
   );
