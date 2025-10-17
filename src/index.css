@@ -2,10 +2,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* そのまま維持（OSのカラースキーム宣言） */
   color-scheme: light dark;
 
-  /* ここをパレット参照に変更 */
   color: var(--hl-text);
   background-color: var(--hl-bg);
 
@@ -31,7 +29,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  /* 背景をテーマに合わせてグラデに（淡い差） */
   background: linear-gradient(180deg, var(--hl-bg), var(--hl-surface));
   color: var(--hl-text);
 }
@@ -49,7 +46,6 @@ button {
   font-size: 1em;
   font-weight: 500;
 
-  /* ライト/ダーク両対応の面色 */
   background-color: var(--hl-surface);
   color: var(--hl-text);
   cursor: pointer;
@@ -67,5 +63,3 @@ button:focus-visible {
   border-color: var(--hl-primary);
 }
 
-/* OS のライトテーマ用の上書きは不要。
-   変数が app.css / body.dark-mode で切り替わるため、そのまま削除。 */
