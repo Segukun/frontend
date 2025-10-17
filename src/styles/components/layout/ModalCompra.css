@@ -1,4 +1,3 @@
-/* Modal overlay + modal pop-in animations */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -16,14 +15,12 @@
   width: min(920px, 96%);
   max-width: 920px;
   max-height: calc(100vh - 40px);
-  /* evita overflow de toda la pantalla */
   background: linear-gradient(180deg, #fffaf3, #ffffff);
   border-radius: 14px;
   box-shadow: 0 20px 60px rgba(4, 8, 20, 0.6);
   padding: 18px;
   position: relative;
   overflow-y: auto;
-  /* scroll vertical si hace falta */
   transform-origin: center center;
   animation: modalPopIn var(--transition-fast) cubic-bezier(.2, .9, .2, 1) forwards;
   -webkit-overflow-scrolling: touch;
@@ -55,7 +52,6 @@
   box-shadow: 0 0 0 4px rgba(9, 43, 86, 0.06);
 }
 
-/* keyframes */
 @keyframes overlayFadeIn {
   from {
     opacity: 0;
@@ -83,7 +79,6 @@
   }
 }
 
-/* Respect prefer-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
 
   .modal-overlay,
@@ -110,10 +105,8 @@
   height: 250px;
   perspective: 1000px;
   margin: 16px auto;
-  /* mover transform al contenedor interno para poder animar */
   display: block;
   cursor: pointer;
-  /* indica interactividad si querés hover flip */
 }
 
 /* inner wrapper to handle the 3d transform */
@@ -125,7 +118,7 @@
   transition: transform 0.6s ease;
 }
 
-/* flipped state (puede añadirse con JS .flipped) */
+/* flipped state */
 .tarjeta.flipped .tarjeta-inner,
 .tarjeta:hover .tarjeta-inner {
   /* hover como fallback visual */
@@ -190,7 +183,6 @@
 /* BACK */
 .tarjeta .back {
   transform: rotateY(180deg);
-  /* inicialmente oculta */
   background: linear-gradient(135deg, #ffbfd7 0%, #ff8fc1 100%);
   justify-content: flex-start;
   padding: 16px;
@@ -322,13 +314,6 @@ form .flexbox select {
   background-color: #fdca97;
 }
 
-/* pequeña mejora de contraste: si querés texto más legible en submit, usar color más oscuro */
-/* .submit-btn { color: #4a2d12; } */
-
-
-/* --- estilos previos del modal (los mantengo) --- */
-/* ... (deja tu CSS modal-overlay, modal, etc) ... */
-
 /* ---------- TARJETA (card) - mejoras para flip y back image ---------- */
 .tarjeta {
   position: relative;
@@ -394,10 +379,6 @@ form .flexbox select {
   padding: 0;
   color: #111;
   position: relative;
-  /* si preferís usar background en vez de img, podes descomentar:
-  background: url('/tarjetatransera.jpg') center/cover no-repeat;
-  background-size: cover;
-  */
 }
 
 /* imagen de la cara trasera (mejor control con img) */
@@ -455,7 +436,6 @@ form .flexbox select {
   top: 12px;
   left: 50%;
   transform: translateX(-50%) scaleX(-1);
-  /* scaleX(-1) lo espeja horizontalmente */
   z-index: 3;
   background: rgba(255, 255, 255, 0.95);
   padding: 6px 10px;
@@ -465,18 +445,15 @@ form .flexbox select {
   letter-spacing: 2px;
   box-shadow: 0 6px 18px rgba(4, 8, 20, 0.18);
   pointer-events: none;
-  /* no interfiere */
   color: #000;
 }
 
-/* Si querés además que el overlay cubra parte del diseño anterior para "tapar otros datos" */
 .tarjeta .back .cvv-mask {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 75px;
-  /* ajusta la altura que quieras cubrir */
   z-index: 2;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.0));
   pointer-events: none;

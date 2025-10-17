@@ -83,7 +83,7 @@ const ModalCompra = ({ onClose }) => {
 
               {/* BACK */}
               <div className="back">
-                {/* back image (usa img para mejor control) */}
+                {/* back image */}
                 <img className="back-image" src="/tarjetadetras.jpg" alt="Back card background" />
 
                 {/* máscara superior para "tapar" otras cosas y dar efecto */}

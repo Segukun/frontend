@@ -8,18 +8,14 @@
     gap: 20px;
 }
 
-/* wrapper grid dentro del catálogo
-   Cambios principales:
-   - columnas con ancho fijo (repeat(auto-fill, 240px)) para que las cards no se estiren
-   - justify-content: center para centrar el conjunto cuando hay espacio sobrante
-   - justify-items: center para centrar las cards dentro de cada celda */
+/* wrapper grid dentro del catálogo */
 .catalogo-grid {
     width: 100%;
     max-width: 1200px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 240px); /* ancho fijo por columna */
-    justify-content: center; /* centra el grid dentro del contenedor */
-    justify-items: center; /* centra el contenido de cada celda */
+    grid-template-columns: repeat(auto-fill, 240px); 
+    justify-content: center; 
+    justify-items: center; 
     gap: 20px;
     align-items: start;
     padding: 6px;
@@ -116,7 +112,7 @@
     font-size: 1.05rem;
 }
 
-/* precio con estilo "badge" */
+/* precio del producto*/
 .precio-card {
     display: inline-block;
     margin: 6px 0 12px;
@@ -138,7 +134,7 @@
     padding-bottom: 6px;
 }
 
-/* form dentro de la card (cantidad + botón) */
+/* form dentro de la card  */
 .card form {
     display: flex;
     gap: 8px;
@@ -234,12 +230,12 @@
 
 /* variable para controlar ancho de las cards */
 :root {
-  --card-width: 240px; /* cámbiala si querés otro ancho por defecto */
+  --card-width: 240px; 
 }
 
-/* --- FLEX LAYOUT: .catalogo-grid como flex container que envuelve --- */
+/* --- FLEX LAYOUT --- */
 .catalogo-grid {
-  display: flex;               /* cambiar a flex para usar flex-wrap */
+  display: flex;              
   flex-wrap: wrap;            /* permite que las cards bajen a la siguiente fila */
   gap: 20px;                  /* separación entre items */
   justify-content: center;    /* centra las filas cuando hay espacio sobrante */
@@ -259,7 +255,6 @@
   box-sizing: border-box;
 }
 
-/* si necesitas que la card pueda reducirse un poco en pantallas pequeñas, usar min-width */
 @media (max-width: 900px) {
   :root { --card-width: 200px; }
 }

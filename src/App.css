@@ -140,9 +140,7 @@ body, main, section, #catalogo, .container {
   box-shadow: none;
 }
 
-/* ================================
-   Dark Mode Background Transitions
-=================================== */
+/* Dark Mode Background Transitions*/
 body.dark-mode,
 body.dark-mode main,
 body.dark-mode section,

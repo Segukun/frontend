@@ -15,7 +15,6 @@
     box-shadow: 0 12px 24px color-mix(in srgb, var(--hl-primary) 20%, transparent);
 }
 
-/* imagen */
 .img-card {
     height: 140px;
     object-fit: cover;
@@ -23,19 +22,16 @@
     background: linear-gradient(180deg, color-mix(in srgb, var(--hl-primary) 10%, transparent), color-mix(in srgb, var(--hl-surface) 90%, transparent));
 }
 
-/* título */
 .titulo-card {
     color: var(--hl-text);
     font-weight: 800;
 }
 
-/* precio */
 .precio-card {
     color: var(--hl-accent);
     font-weight: 800;
 }
 
-/* botón */
 .card form input[type="submit"] {
     background: linear-gradient(180deg, var(--hl-primary), var(--hl-primary-600));
     color: var(--hl-bg);
