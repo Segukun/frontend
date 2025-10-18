@@ -49,7 +49,7 @@ const Carrito = () => {
         ))}
       </ul>
       <div className="div-opciones">
-        <button id="check" className={carrito.length === 0 ? "disabled" : "btn-pagar"} onClick={() => carrito.length > 0 && setOpenModal(true)}>
+        <button id="check" className="btn-pagar" onClick={() => carrito.length > 0 && setOpenModal(true)}>
           Ir a Pagar
         </button>
 

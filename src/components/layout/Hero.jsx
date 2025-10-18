@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import "../../styles/components/layout/Hero.css";
 
 const Hero = () => {
+  const [texto, setTexto] = React.useState(" Productos VTuber, voces exclusivas, ilustraciones y más.");  
+
   useEffect(() => {
     const yaVisitado = sessionStorage.getItem("yaVisito");
-    const textoInicio = document.getElementById("texto");
-    if (textoInicio) {
+    if (texto === " Productos VTuber, voces exclusivas, ilustraciones y más.") {
       if (yaVisitado) {
-        textoInicio.textContent = "¡Bienvenido de nuevo! " + textoInicio.textContent;
+        setTexto(" Bienvenido de nuevo a VTuber Store!");
       } else {
         sessionStorage.setItem("yaVisito", "true");
       }
@@ -21,7 +22,7 @@ const Hero = () => {
       </video>
 
       <div className="content">
-        <h1 id="texto"> Consigue productos de VTubers, voces exclusivas, ilustraciones y más.</h1>
+        <h1 id="texto">{texto} Consigue productos de VTubers, voces exclusivas, ilustraciones y más. </h1>
         <a href="#catalogo"> Ver ahora! </a>
       </div>
     </section>
@@ -29,4 +30,4 @@ const Hero = () => {
 };
 
 export default Hero;
-// Componente Hero con video de fondo y mensaje de bienvenida
+// Componente Hero con video y mensaje de bienvenida
