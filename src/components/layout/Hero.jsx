@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import "../../styles/components/layout/Hero.css";
 
 const Hero = () => {
-  const [texto, setTexto] = React.useState(" Productos VTuber, voces exclusivas, ilustraciones y más.");  
+  const [texto, setTexto] = React.useState(" Consigue productos de VTubers, voces exclusivas, ilustraciones y más.");  
 
   useEffect(() => {
     const yaVisitado = sessionStorage.getItem("yaVisito");
-    if (texto === " Productos VTuber, voces exclusivas, ilustraciones y más.") {
+    if (texto === " Consigue productos de VTubers, voces exclusivas, ilustraciones y más.") {
       if (yaVisitado) {
-        setTexto(" Bienvenido de nuevo a VTuber Store!");
+        setTexto(" Bienvenido de nuevo a HolyShop!");
       } else {
         sessionStorage.setItem("yaVisito", "true");
       }
@@ -22,7 +22,7 @@ const Hero = () => {
       </video>
 
       <div className="content">
-        <h1 id="texto">{texto} Consigue productos de VTubers, voces exclusivas, ilustraciones y más. </h1>
+        <h1 id="texto">{texto}</h1>
         <a href="#catalogo"> Ver ahora! </a>
       </div>
     </section>
