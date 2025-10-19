@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import "../../styles/components/layout/Hero.css";
 
 const Hero = () => {
-  const [texto, setTexto] = React.useState(" Consigue productos de VTubers, voces exclusivas, ilustraciones y más.");  
+  const [texto, setTexto] = React.useState(" Bienvenido a HolyShop! Consigue productos de VTubers, voces exclusivas, ilustraciones y más.");  
 
   useEffect(() => {
     const yaVisitado = sessionStorage.getItem("yaVisito");
-    if (texto === " Consigue productos de VTubers, voces exclusivas, ilustraciones y más.") {
+    if (texto === " Bienvenido a HolyShop! Consigue productos de VTubers, voces exclusivas, ilustraciones y más.") {
       if (yaVisitado) {
-        setTexto(" Bienvenido de nuevo a HolyShop!");
+        setTexto(" Bienvenido de nuevo a HolyShop! Consigue productos de VTubers, voces exclusivas, ilustraciones y más.");
       } else {
         sessionStorage.setItem("yaVisito", "true");
       }
